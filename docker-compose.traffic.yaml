@@ -1,0 +1,9 @@
+version: "2"
+services:
+  trafficcontrol:
+    image: summerequinoxbw/trafficlightcontroller:20200801
+    restart: always
+    environment:
+      - MQTT_IP=192.168.200.91
+      - TZ=America/Vancouver
+      - INDICATORTOPIC='cmnd/tasmota/POWER4'
