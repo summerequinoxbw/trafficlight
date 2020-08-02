@@ -6,4 +6,4 @@ services:
     environment:
       - MQTT_IP=192.168.200.91
       - TZ=America/Vancouver
-      - INDICATORTOPIC='cmnd/tasmota/POWER4'
+      - INDICATORTOPIC=cmnd/tasmota/POWER4

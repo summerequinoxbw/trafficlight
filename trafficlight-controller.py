@@ -20,7 +20,7 @@ clients = []
 indicatortopic = None
 
 def on_publish(client,userdata,result):
-	print('data published %s\n'%result)
+	print('data published %s'%result)
 
 def on_disconnect(client, userdata, rc):
 	now = datetime.now().strftime("%Y-%b-%d, %H:%M:%S")
@@ -52,7 +52,9 @@ def on_message_statechange(client, userdata, message):
 def on_message_changeindicator(client, userdata, message):
 	messagepayload = message.payload.decode('utf-8')
 
+	print("indicator action triggered")
 	if indicatortopic is not None:
+		print("changing indicator")
 		clients[0].publish(indicatortopic, payload=messagepayload, qos=1, retain=False)
 
 def main(**kwargs):
@@ -60,9 +62,11 @@ def main(**kwargs):
 	print("Starting traffic light controller")
 
 	global clients
+	global indicatortopic
 
 	if 'indicatortopic' in kwargs:
 		indicatortopic = kwargs['indicatortopic']
+		print("Indicator topic is: %s"%indicatortopic)
 	else:
 		indicatortopic = None
 
