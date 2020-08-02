@@ -1,9 +1,12 @@
-version: "2"
+version: "3"
 services:
   trafficcontrol:
-    image: summerequinoxbw/trafficlightcontroller:20200801
+    container_name: "Traffic Light Controller"
+    build:
+      context: ./
+      dockerfile: Dockerfile
     restart: always
     environment:
-      - MQTT_IP=192.168.200.91
+      - MQTT_IP=1.2.3.4
       - TZ=America/Vancouver
-      - INDICATORTOPIC=cmnd/tasmota/POWER4
+      - INDICATORTOPIC=optional/command/topic/here
