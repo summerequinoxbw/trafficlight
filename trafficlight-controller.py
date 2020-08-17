@@ -36,12 +36,8 @@ def on_connect(client, userdata, flags, rc):
 #changes lights based on the bool 'green'. POWER4 = red light, POWER3 = greenlight
 def changeLights( green ):
 	if not green:
-		clients[0].publish('cmnd/traffic/POWER4', payload='off', qos=1, retain=False)
-		time.sleep(1)
 		clients[0].publish('cmnd/traffic/POWER3', payload='on', qos=1, retain=False)
 	else:
-		clients[0].publish('cmnd/traffic/POWER3', payload='off', qos=1, retain=False)
-		time.sleep(1)
 		clients[0].publish('cmnd/traffic/POWER4', payload='on', qos=1, retain=False)
 
 #mqtt listener for changing the lights

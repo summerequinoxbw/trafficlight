@@ -1,0 +1,13 @@
+[Unit]
+Description=Desk Control Box
+After=network.target
+
+[Service]
+User=1001
+Group=1001
+ExecStart=/usr/bin/python3 -u /home/netop/trafficlight.py "vid=2341" "pid=8037" "mqtt-ip=192.168.9.91" "mqtt-port=1883"
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
